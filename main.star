@@ -20,11 +20,11 @@ def run(
         num_proposers(int): number of proposers you want to run on l2
     """
     if playbook == 'devnet':
-        devnet(plan, config_path)
+        devnet(plan)
     else:
         fail('Unknown playbook: {}'.format(playbook))
 
-def devnet(plan, config_path):
+def devnet(plan:
     # if config_path == None:
     #     fail('config_path is required')
 
