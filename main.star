@@ -7,9 +7,18 @@ geth = import_module('./src/geth.star')
 
 def run(
         plan,
-        playbook,
-        config_path=None
+        playbook="devnet",
+        num_batchers=1,
+        num_proposers=1,
+        # config_path=None
 ):
+    """Runs an op-stack devnet for ya"
+
+    Args:
+        playbook(string): the playbook you want to run (eg. devnet, production, local)
+        num_batchers(int): number of batchers you want to run on l2
+        num_proposers(int): number of proposers you want to run on l2
+    """
     if playbook == 'devnet':
         devnet(plan, config_path)
     else:
