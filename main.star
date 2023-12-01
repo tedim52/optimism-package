@@ -24,7 +24,7 @@ def run(
     else:
         fail('Unknown playbook: {}'.format(playbook))
 
-def devnet(plan:
+def devnet(plan):
     # if config_path == None:
     #     fail('config_path is required')
 
