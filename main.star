@@ -25,8 +25,8 @@ def run(
         fail('Unknown playbook: {}'.format(playbook))
 
 def devnet(plan, config_path):
-    if config_path == None:
-        fail('config_path is required')
+    # if config_path == None:
+    #     fail('config_path is required')
 
     # Make an archive containing the Geth genesis file and the keystore password.
     geth_config = plan.upload_files(
