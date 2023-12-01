@@ -65,7 +65,7 @@ def devnet(plan):
             '--chain-config-file=/config/config.yml ' +
             '--geth-genesis-json-in=/execution-in/genesis.json ' +
             '--geth-genesis-json-out=/execution-out/genesis.json ',
-        image='mslipper/prysm-shell:latest',
+        image='tedim52/prysm-shell:latest',
         files={
             '/config': prysm_config,
             '/execution-in': geth_config,
@@ -105,7 +105,7 @@ def devnet(plan):
     beacon_chain = plan.add_service(
         name='l1-beacon-chain',
         config=ServiceConfig(
-            image='mslipper/prysm-shell:latest',
+            image='tedim52/prysm-shell:latest',
             cmd=[
                 'beacon-chain',
                 '--datadir=/data',
@@ -139,7 +139,7 @@ def devnet(plan):
     plan.add_service(
         name='l1-validator',
         config=ServiceConfig(
-            image='mslipper/prysm-shell:latest',
+            image='tedim52/prysm-shell:latest',
             cmd=[
                 'validator',
                 '--datadir=/data',
