@@ -210,7 +210,7 @@ def devnet(plan):
             "--sig='sync()'",
             '--rpc-url=http://{}:8545'.format(l1_geth.ip_address),
         ]),
-        image='us-docker.pkg.dev/oplabs-tools-artifacts/images/contracts-bedrock:00a0afe7125f9',
+        image='us-docker.pkg.dev/oplabs-tools-artifacts/images/contracts-bedrock:83b3f43bf15de34ac8eea5c0698b5bee50ecb3e0',
         files={
             '/opt/optimism/packages/contracts-bedrock/deploy-config': deploy_config,
         },
