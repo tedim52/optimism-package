@@ -36,38 +36,38 @@ def launch_l2(plan, l2_args, l1_config, l1_priv_key, l1_bootnode_context):
         name="op_jwt_file-{0}".format(network_params.network_id),
     )
 
-    # all_l2_participants = participant_network.launch_participant_network(
-    #     plan,
-    #     args_with_right_defaults.participants,
-    #     jwt_file,
-    #     network_params,
-    #     el_cl_data,
-    #     gs_private_keys,
-    #     l1_config,
-    #     l2oo_address,
-    # )
+    all_l2_participants = participant_network.launch_participant_network(
+        plan,
+        args_with_right_defaults.participants,
+        jwt_file,
+        network_params,
+        el_cl_data,
+        gs_private_keys,
+        l1_config,
+        l2oo_address,
+    )
 
-    # all_el_contexts = []
-    # all_cl_contexts = []
-    # for participant in all_l2_participants:
-    #     all_el_contexts.append(participant.el_context)
-    #     all_cl_contexts.append(participant.cl_context)
+    all_el_contexts = []
+    all_cl_contexts = []
+    for participant in all_l2_participants:
+        all_el_contexts.append(participant.el_context)
+        all_cl_contexts.append(participant.cl_context)
 
-    # for additional_service in args_with_right_defaults.additional_services:
-    #     if additional_service == "blockscout":
-    #         plan.print("Launching op-blockscout")
-    #         blockscout_launcher = blockscout.launch_blockscout(
-    #             plan,
-    #             network_params.network_id,
-    #             l1_bootnode_context, # first l1 EL url
-    #             l2oo_address,
-    #             blockscout_env_variables,
-    #         )
-    #         plan.print("Successfully launched op-blockscout")
+    for additional_service in args_with_right_defaults.additional_services:
+        if additional_service == "blockscout":
+            plan.print("Launching op-blockscout")
+            blockscout_launcher = blockscout.launch_blockscout(
+                plan,
+                network_params.network_id,
+                l1_bootnode_context, # first l1 EL url
+                l2oo_address,
+                blockscout_env_variables,
+            )
+            plan.print("Successfully launched op-blockscout")
 
-    # plan.print(all_l2_participants)
-    # plan.print(
-    #     "Begin your L2 adventures by depositing some L1 Kurtosis ETH to: {0}".format(
-    #         l1_bridge_address
-    #     )
-    # )
+    plan.print(all_l2_participants)
+    plan.print(
+        "Begin your L2 adventures by depositing some L1 Kurtosis ETH to: {0}".format(
+            l1_bridge_address
+        )
+    )

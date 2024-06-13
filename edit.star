@@ -48,16 +48,9 @@ def run(plan, args):
         }
     })
 
-    plan.set_service(
-        name="cl-1-lighthouse-geth",
-        config=ServiceConfig(
-            image="ethpandaops/lighthouse:unstable",
-        ),
-    )
-
     # plan.set_service(
     #     name="cl-1-lighthouse-geth",
     #     config=ServiceConfig(
-    #         image="ethpandaops/lighthouse:stable",
+    #         image="ethpandaops/lighthouse:unstable",
     #     ),
     # )
