@@ -1,4 +1,4 @@
-optimism = import_module("github.com/tedim52/optimism-package/main.star")
+optimism = import_module("github.com/tedim52/optimism-package/main.star@tedi/edittest")
 
 def run(plan, args):
     optimism.run(plan, {
@@ -7,7 +7,7 @@ def run(plan, args):
             "participants": [
                 {
                 "el_type": "op-geth", 
-                "el_image": "jinmel/op-geth:preconf1"
+                # "el_image": "jinmel/op-geth:preconf1"
                 }
             ], 
             "additional_services": [
@@ -23,7 +23,7 @@ def run(plan, args):
             "participants": [
                 {
                 "el_type": "op-geth", 
-                "el_image": "jinmel/op-geth:preconf1"
+                # "el_image": "jinmel/op-geth:preconf1"
                 }
             ], 
             "additional_services": [
@@ -48,7 +48,16 @@ def run(plan, args):
         }
     })
 
-    # plan.set_service(name="op-geth...", config = ServiceConfig(image=ImageBuildSpec(
-    #     build_context=".",
-    #     name="jinmel/op-geth:preconfig1"
-    # )))
+    plan.set_service(
+        name="cl-1-lighthouse-geth",
+        config=ServiceConfig(
+            image="ethpandaops/lighthouse:unstable",
+        ),
+    )
+
+    # plan.set_service(
+    #     name="cl-1-lighthouse-geth",
+    #     config=ServiceConfig(
+    #         image="ethpandaops/lighthouse:stable",
+    #     ),
+    # )
