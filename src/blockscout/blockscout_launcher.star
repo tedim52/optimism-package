@@ -47,6 +47,7 @@ def launch_blockscout(
     plan,
     l2_services_suffix,
     el_context,
+    l2_el_context,
     l2oo_address,
     additional_env_vars,
 ):
@@ -71,6 +72,7 @@ def launch_blockscout(
     config_backend = get_config_backend(
         postgres_output,
         el_context,
+        l2_el_context,
         verif_url,
         l2oo_address,
         additional_env_vars,
@@ -104,7 +106,7 @@ def get_config_verif():
 
 
 def get_config_backend(
-    postgres_output, el_context, verif_url, l2oo_address, additional_env_vars
+    postgres_output, el_context, l2_el_context, verif_url, l2oo_address, additional_env_vars
 ):
     database_url = "{protocol}://{user}:{password}@{hostname}:{port}/{database}".format(
         protocol="postgresql",
@@ -143,11 +145,9 @@ def get_config_backend(
             'bin/blockscout eval "Elixir.Explorer.ReleaseTasks.create_and_migrate()" && bin/blockscout start',
         ],
         env_vars={
-            "ETHEREUM_JSONRPC_VARIANT": "erigon"
-            if el_context.client_name == "erigon" or el_context.client_name == "reth"
-            else el_context.client_name,
-            "ETHEREUM_JSONRPC_HTTP_URL": el_context.rpc_http_url,
-            "ETHEREUM_JSONRPC_TRACE_URL": el_context.rpc_http_url,
+            "ETHEREUM_JSONRPC_VARIANT": "geth",
+            "ETHEREUM_JSONRPC_HTTP_URL": l2_el_context.rpc_http_url,
+            "ETHEREUM_JSONRPC_TRACE_URL": l2_el_context.rpc_http_url,
             "DATABASE_URL": database_url,
             "COIN": "opETH",
             "MICROSERVICE_SC_VERIFIER_ENABLED": "true",
