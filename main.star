@@ -24,6 +24,8 @@ def run(plan, args):
     l1_priv_key = l1.pre_funded_accounts[12].private_key  # reserved for L2 contract deployers
     l1_config_env_vars = get_l1_config(all_l1_participants, l1_network_params)
 
+    # Wait for chain to be finalized
+
     # Deploy Create2 Factory contract (only need to do this once for multiple l2s)
     contract_deployer.deploy_factory_contract(plan, l1_priv_key, l1_config_env_vars)
 
